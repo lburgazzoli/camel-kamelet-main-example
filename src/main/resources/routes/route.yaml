@@ -1,0 +1,5 @@
+
+- from:
+    uri: "kamelet:injector-source"
+    steps:
+      - to: "kamelet:aws-s3-streaming-upload-sink"
