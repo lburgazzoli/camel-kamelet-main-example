@@ -7,24 +7,9 @@ metadata:
 spec:
   definition:
     title: "Kafka Source"
-    required:
-      - topic
-      - user
-      - password
-    properties:
-      topic:
-        title: topics
-        type: string
-      user:
-        title: user
-        type: string
-      password:
-        title: password
-        type: string
   dependencies:
     - camel:kafka
     - camel:kamelet
-    - mvn:org.apache.kafka:kafka-clients:2.6.0
   flow:
     from:
       uri: "kafka:{{topic}}"
@@ -32,6 +17,6 @@ spec:
         brokers: "{{bootstrapServers}}"
         securityProtocol: "SASL_SSL"
         saslMechanism: "PLAIN"
-        saslJaasConfig: "org.apache.kafka.common.security.plain.PlainLoginModule required username='{{user}}' password='{{password}}';"
+        saslJaasConfig: "org.apache.kafka.common.security.plain.PlainLoginModule required username='{{k_client_id}}' password='{{k_client_secret}}';"
       steps:
         - to: "kamelet:sink"

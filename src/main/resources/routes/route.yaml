@@ -2,4 +2,5 @@
 - from:
     uri: "kamelet:kafka-src"
     steps:
+      - to: "log:info"
       - to: "kamelet:aws-s3-streaming-upload-sink"
