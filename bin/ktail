@@ -1,0 +1,17 @@
+#!/bin/bash
+
+docker run \
+    --rm \
+    -ti \
+    -v $PWD:/tmp/data:Z \
+    edenhill/kafkacat:1.6.0 \
+        kafkacat \
+        -v \
+        -b ${KAS_URL} \
+        -X security.protocol=SASL_SSL \
+        -X sasl.mechanism=PLAIN \
+        -X sasl.username=${KAS_CLIENT_ID} \
+        -X sasl.password=${KAS_CLIENT_SECRET} \
+        -t s3-batch \
+        -d all \
+        -C

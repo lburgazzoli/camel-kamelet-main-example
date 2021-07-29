@@ -1,5 +1,5 @@
 
 - from:
-    uri: "kamelet:injector-source"
+    uri: "kamelet:kafka-src"
     steps:
       - to: "kamelet:aws-s3-streaming-upload-sink"
